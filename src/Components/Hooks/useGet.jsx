@@ -14,8 +14,6 @@ const useGet = ( url ) => {
 
     useEffect( () => {
 
-        console.log( url );
-        console.log( "useEffect ran!" );
         const controller = new AbortController();
         axios.get( url, { signal: controller.signal } )
             .then( res => {
