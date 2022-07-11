@@ -8,7 +8,7 @@ module.exports.register = async ( req, res ) => {
     req.logIn( registeredUser, err => {
         if ( err ) throw err;
         res.send( { _id: user._id, email: user.email, username: user.username } )
-    } )
+    } );
 
 };
 module.exports.login = async ( req, res ) => {

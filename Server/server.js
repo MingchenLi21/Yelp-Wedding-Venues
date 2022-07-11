@@ -48,7 +48,7 @@ const sessionConfig = {
     store,
     cookie: {
         httpOnly: true,
-        secure: true,
+        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7, //expires in one week
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -117,10 +117,6 @@ app.use( "/api/venues", venueRoutes );
 app.use( "/api/venues/:id/reviews", reviewRoutes );
 app.use( "/api/auth", authRoutes )
 
-app.all( "*", ( req, res ) => {
-    throw new Error( "Unknow API!" );
-} );
-
 app.use(express.static(path.join(__dirname, '../build')));
 
 if ( process.env.NODE_ENV !== "production" ) {
@@ -128,6 +124,10 @@ if ( process.env.NODE_ENV !== "production" ) {
         res.sendFile(path.join(__dirname, '../build', 'index.html'));
       });
 }
+
+app.all( "*", ( req, res ) => {
+    throw new Error( "Unknow API!" );
+} );
 
 app.use( ( err, req, res, next ) => {
     // error handler

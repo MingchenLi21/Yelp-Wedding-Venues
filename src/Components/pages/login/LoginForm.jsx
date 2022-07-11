@@ -38,7 +38,7 @@ const LoginForm = ( { from } ) => {
         axios.post( "/api/auth/login", user )
             .then( res => {
                 setBtnLoading( false );
-
+                console.log(res);
                 const user = res.data;
                 login( user );
                 showMsg( "welcom back!", "success", 5000 );
