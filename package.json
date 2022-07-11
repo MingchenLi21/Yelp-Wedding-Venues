@@ -2,7 +2,7 @@
   "name": "yelp-wedding-venues",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.13.4",
     "@testing-library/jest-dom": "^5.16.4",
@@ -39,7 +39,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "startApp": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [

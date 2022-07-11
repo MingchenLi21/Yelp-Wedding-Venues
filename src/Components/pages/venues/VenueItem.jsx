@@ -6,7 +6,7 @@ const VenueItem = ( props ) => {
     const { venue } = props;
     return (
         <Card className="mb-3">
-            <Card.Img variant="top" src={venue.images.length ? venue.images[0].url : process.env.REACT_APP_DEFAULT_IMG_ADDRESS} /> 
+            <Card.Img variant="top" src={venue?.images.length ? venue.images[0].url : process.env.REACT_APP_DEFAULT_IMG_ADDRESS} /> 
             <Card.Body>
                 <Card.Title>{venue.title}</Card.Title>
                 <Card.Text>{venue.description}</Card.Text>
