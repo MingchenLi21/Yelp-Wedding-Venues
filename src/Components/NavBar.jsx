@@ -14,7 +14,7 @@ const NavBar = () => {
     const location = useLocation();
 
     const handleClick = () => {
-        axios.post( "/auth/logout" ).then( res => {
+        axios.post( "/api/auth/logout" ).then( res => {
             logout();
         } );
 

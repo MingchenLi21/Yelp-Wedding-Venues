@@ -15,7 +15,7 @@ export const LoggedInProvider = ( { children } ) => {
 
     useEffect( () => {
         // check if the user is logged in
-        axios.get( "/auth/isLoggedin" ).then( res => {
+        axios.get( "/api/auth/isLoggedin" ).then( res => {
             if ( res.data ) {
                 setUser(res.data);
             }else{

@@ -33,7 +33,7 @@ const RegisterForm = ( { from } ) => {
         }
 
 
-        axios.post( "/auth/register", { user: newUser } )
+        axios.post( "/api/auth/register", { user: newUser } )
             .then( res => {
                 console.log( res );
                 showMsg( "Successfully registered!", "success", 5000 );
