@@ -16,17 +16,17 @@ const App = () => {
         <Route path="/" element={ <Layout /> }>
           <Route index element={ <Home /> } />
 
-          <Route path="/new" element={
+          <Route path="new" element={
             <RequireAuth>
               <AddVenuePage />
             </RequireAuth> }
           />
 
-          <Route path="/register" element={ <RegisterPage /> } />
+          <Route path="register" element={ <RegisterPage /> } />
 
-          <Route path="/login" element={ <LoginPage /> } />
+          <Route path="login" element={ <LoginPage /> } />
 
-          <Route path="/venues" >
+          <Route path="venues/" >
             <Route index element={ <VenuesPage /> } />
             <Route path=":id" element={ <VenuePage /> } />
 
