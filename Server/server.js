@@ -119,6 +119,7 @@ app.use( "/auth", authRoutes )
 app.all( "*", ( req, res ) => {
     throw new Error( "Unknow API!" );
 } );
+app.use(express.static(path.join(__dirname, '../build')));
 
 app.use( ( err, req, res, next ) => {
     // error handler
@@ -127,6 +128,7 @@ app.use( ( err, req, res, next ) => {
 } )
 // app.use( AppErrorHandler ); //error-handling middleware should be last,
 // after other app.use() and routes calls;
+
 const server_port = process.env.SERVER_PORT || 5000;
 app.listen( server_port, () => {
     console.log( `Listening on port ${ server_port }!` );
