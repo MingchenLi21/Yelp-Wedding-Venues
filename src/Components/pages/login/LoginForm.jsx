@@ -35,7 +35,7 @@ const LoginForm = ( { from } ) => {
             username,
             password
         }
-        axios.post( "/auth/login", user )
+        axios.post( "/api/auth/login", user )
             .then( res => {
                 setBtnLoading( false );
 
