@@ -43,11 +43,11 @@ const sessionConfig = {
     name: "session",
     secret,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store,
     cookie: {
         httpOnly: true,
-        // secure: true,
+        secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7, //expires in one week
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
