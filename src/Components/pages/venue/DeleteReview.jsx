@@ -9,7 +9,7 @@ const DeleteReview = ( { reviewId, reload } ) => {
     const {showMsg} = useShowMsg();
 
     const handleDelete = () => {
-        axios.delete( `/venues/${ VenueId }/reviews/${ reviewId }` )
+        axios.delete( `/api/venues/${ VenueId }/reviews/${ reviewId }` )
             .then( res => {
                 showMsg( "Review deleted", "success", 4000 );
 

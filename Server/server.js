@@ -113,9 +113,9 @@ app.use( morgan( 'tiny' ) );
 app.use( bodyParser.json() ); // for parsing application/json
 app.use( bodyParser.urlencoded( { extended: true } ) ); // for parsing application/x-www-form-urlencoded
 
-app.use( "/venues", venueRoutes );
-app.use( "/venues/:id/reviews", reviewRoutes );
-app.use( "/auth", authRoutes )
+app.use( "/api/venues", venueRoutes );
+app.use( "/api/venues/:id/reviews", reviewRoutes );
+app.use( "/api/auth", authRoutes )
 
 app.all( "*", ( req, res ) => {
     throw new Error( "Unknow API!" );

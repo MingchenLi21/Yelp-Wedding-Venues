@@ -5,7 +5,7 @@ import ClusterMap from "./ClusterMap";
 
 
 const VenuesPage = () => {
-    const { data: venues, isLoading, error } = useGet( "/venues" );
+    const { data: venues, isLoading, error } = useGet( "/api/venues" );
 
     return (
         <div className="venues-page">

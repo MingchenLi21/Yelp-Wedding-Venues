@@ -50,7 +50,7 @@ const EditVenueForm = ( { venue } ) => {
 
         deleteImg.forEach((e, idx) => {e && formData.append("deleteImages", venue.images[idx].filename)});
 
-        axios.patch( `/venues/${ venue._id }`, formData, {
+        axios.patch( `/api/venues/${ venue._id }`, formData, {
             headers: {
                 'content-type': 'multipart/form-data'
             }
@@ -148,7 +148,7 @@ const EditVenueForm = ( { venue } ) => {
                 </Button>
 
             </Form>
-            <Link to={ `../venues/${ venue._id }` }>Back to Venue</Link>
+            <Link to={ `/venues/${ venue._id }` }>Back to Venue</Link>
         </Col>
     );
 };

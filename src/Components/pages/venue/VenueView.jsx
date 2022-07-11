@@ -15,7 +15,7 @@ const Venue = ( props ) => {
     const { user } = useAuth();
 
     const handleDelete = () => {
-        axios.delete( `/venues/${ venue._id }` )
+        axios.delete( `/api/venues/${ venue._id }` )
             .then( res => {
                 navigate( "/venues" );
             } );

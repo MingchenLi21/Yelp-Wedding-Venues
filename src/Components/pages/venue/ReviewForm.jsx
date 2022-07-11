@@ -27,7 +27,7 @@ const ReviewForm = ( { venue, reload } ) => {
 
         setBtnLoading( true );
 
-        axios.post( `/venues/${ venue._id }/reviews`, { review } )
+        axios.post( `/api/venues/${ venue._id }/reviews`, { review } )
             .then( res => {
                 reload();
 

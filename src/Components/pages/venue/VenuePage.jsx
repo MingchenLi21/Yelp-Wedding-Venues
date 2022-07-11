@@ -13,7 +13,7 @@ const VenuePage = () => {
     const { id: VenueId } = useParams();
     const { user } = useAuth();
 
-    const { data: venue, isLoading, error, reload } = useGet( `/venues/${ VenueId }` );
+    const { data: venue, isLoading, error, reload } = useGet( `/api/venues/${ VenueId }` );
 
     return (
         <Container className="venue-page">

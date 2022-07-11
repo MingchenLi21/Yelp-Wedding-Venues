@@ -40,7 +40,7 @@ const AddVenueForm = () => {
                 formData.append( "images", images.item( i ) );
             }
         }
-        axios.post( "/venues", formData, {
+        axios.post( "/api/venues", formData, {
             headers: {
                 'content-type': 'multipart/form-data'
             }

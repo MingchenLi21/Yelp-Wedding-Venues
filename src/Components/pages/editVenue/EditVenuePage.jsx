@@ -6,7 +6,7 @@ import NoPermission from "./NoPermission";
 
 const EditVenuePage = () => {
     const { id: VenueId } = useParams();
-    const { data: venue, isLoading, error } = useGet( `/venues/${ VenueId }` );
+    const { data: venue, isLoading, error } = useGet( `/api/venues/${ VenueId }` );
     const { user } = useAuth();
 
     return (
