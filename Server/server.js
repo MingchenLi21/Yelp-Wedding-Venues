@@ -13,7 +13,7 @@ const venueRoutes = require( "./routes/venues" );
 const reviewRoutes = require( "./routes/reviews" );
 const authRoutes = require( "./routes/auth" );
 const app = express();
-const path = require('path');
+const path = require( 'path' );
 const bodyParser = require( "body-parser" );
 const MongoStore = require( 'connect-mongo' );
 const mongoose = require( "mongoose" );
@@ -117,13 +117,11 @@ app.use( "/api/venues", venueRoutes );
 app.use( "/api/venues/:id/reviews", reviewRoutes );
 app.use( "/api/auth", authRoutes )
 
-app.use(express.static(path.join(__dirname, '../build')));
+app.use( express.static( path.join( __dirname, '../build' ) ) );
 
-if ( process.env.NODE_ENV !== "production" ) {
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../build', 'index.html'));
-      });
-}
+app.get( '*', ( req, res ) => {
+    res.sendFile( path.join( __dirname, '../build', 'index.html' ) );
+} );
 
 app.all( "*", ( req, res ) => {
     throw new Error( "Unknow API!" );
