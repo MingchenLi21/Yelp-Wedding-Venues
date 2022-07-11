@@ -58,7 +58,7 @@ const EditVenueForm = ( { venue } ) => {
             .then( res => {
 
                 showMsg("Venue updated!", "success", 5000);
-                navigate( `/venues/${ venue._id }`, { replace: true } );
+                navigate( `/venues/${ venue._id }`);
 
             } ).catch( e => {
 
