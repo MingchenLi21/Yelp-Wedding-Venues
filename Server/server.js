@@ -13,6 +13,7 @@ const venueRoutes = require( "./routes/venues" );
 const reviewRoutes = require( "./routes/reviews" );
 const authRoutes = require( "./routes/auth" );
 const app = express();
+const path = require('path');
 const bodyParser = require( "body-parser" );
 const MongoStore = require( 'connect-mongo' );
 const mongoose = require( "mongoose" );
