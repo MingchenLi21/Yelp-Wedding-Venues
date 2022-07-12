@@ -85,26 +85,26 @@ const connectSrcUrls = [
     "https://events.mapbox.com/",
 ];
 const fontSrcUrls = [];
-app.use(
-    helmet.contentSecurityPolicy( {
-        directives: {
-            defaultSrc: [],
-            connectSrc: [ "'self'", ...connectSrcUrls ],
-            scriptSrc: [ "'unsafe-inline'", "'self'", ...scriptSrcUrls ],
-            styleSrc: [ "'self'", "'unsafe-inline'", ...styleSrcUrls ],
-            workerSrc: [ "'self'", "blob:" ],
-            objectSrc: [],
-            imgSrc: [
-                "'self'",
-                "blob:",
-                "data:",
-                "https://res.cloudinary.com/dj1pime6o/",
-                "https://images.unsplash.com/",
-            ],
-            fontSrc: [ "'self'", ...fontSrcUrls ],
-        },
-    } )
-);
+// app.use(
+//     helmet.contentSecurityPolicy( {
+//         directives: {
+//             defaultSrc: [],
+//             connectSrc: [ "'self'", ...connectSrcUrls ],
+//             scriptSrc: [ "'unsafe-inline'", "'self'", ...scriptSrcUrls ],
+//             styleSrc: [ "'self'", "'unsafe-inline'", ...styleSrcUrls ],
+//             workerSrc: [ "'self'", "blob:" ],
+//             objectSrc: [],
+//             imgSrc: [
+//                 "'self'",
+//                 "blob:",
+//                 "data:",
+//                 "https://res.cloudinary.com/dj1pime6o/",
+//                 "https://images.unsplash.com/",
+//             ],
+//             fontSrc: [ "'self'", ...fontSrcUrls ],
+//         },
+//     } )
+// );
 
 
 
@@ -113,17 +113,20 @@ app.use( morgan( 'tiny' ) );
 app.use( bodyParser.json() ); // for parsing application/json
 app.use( bodyParser.urlencoded( { extended: true } ) ); // for parsing application/x-www-form-urlencoded
 
+
 app.use( "/api/venues", venueRoutes );
 app.use( "/api/venues/:id/reviews", reviewRoutes );
 app.use( "/api/auth", authRoutes )
 
+
 app.use( express.static( path.join( __dirname, '../build' ) ) );
 
-app.get( '*', ( req, res ) => {
+
+app.get( '/(.*)', ( req, res ) => {
     res.sendFile( path.join( __dirname, '../build', 'index.html' ) );
 } );
 
-app.all( "*", ( req, res ) => {
+app.all( "/(.*)", ( req, res ) => {
     throw new Error( "Unknow API!" );
 } );
 
@@ -135,7 +138,7 @@ app.use( ( err, req, res, next ) => {
 // app.use( AppErrorHandler ); //error-handling middleware should be last,
 // after other app.use() and routes calls;
 
-const server_port = process.env.PORT || 5000;
+const server_port = process.env.PORT || 8080;
 app.listen( server_port, () => {
     console.log( `Listening on port ${ server_port }!` );
 } )
