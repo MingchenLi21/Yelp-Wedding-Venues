@@ -13,7 +13,7 @@ const ImgSlide = ( { images } ) => {
     return (
         <Carousel controls={images.length > 1} indicators={ false } activeIndex={index} onSelect={handleSelect}>
             { images.map( img => <Carousel.Item key={img._id}>
-                <Image src={img.url} />
+                <Image src={img.url.replace("/upload", "/upload/c_scale,w_800")} />
             </Carousel.Item> ) }
         </Carousel>
     );

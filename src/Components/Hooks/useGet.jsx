@@ -17,9 +17,6 @@ const useGet = ( url ) => {
         const controller = new AbortController();
         axios.get( url, { signal: controller.signal } )
             .then( res => {
-                // if ( res.status >= 400 ) {
-                //     throw Error( "could not get the data for this resource" );
-                // }
 
                 setData( res.data );
                 setError( null );
