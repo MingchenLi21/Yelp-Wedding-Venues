@@ -36,7 +36,7 @@ const store = MongoStore.create( {
 } );
 
 store.on( "error", ( e ) => {
-    console.log( "There's an error on seesion store" );
+    console.log( "There's an error on session store" );
     console.log( e );
 } );
 
@@ -85,57 +85,52 @@ const connectSrcUrls = [
     "https://events.mapbox.com/",
 ];
 const fontSrcUrls = [];
-// app.use(
-//     helmet.contentSecurityPolicy( {
-//         directives: {
-//             defaultSrc: [],
-//             connectSrc: [ "'self'", ...connectSrcUrls ],
-//             scriptSrc: [ "'unsafe-inline'", "'self'", ...scriptSrcUrls ],
-//             styleSrc: [ "'self'", "'unsafe-inline'", ...styleSrcUrls ],
-//             workerSrc: [ "'self'", "blob:" ],
-//             objectSrc: [],
-//             imgSrc: [
-//                 "'self'",
-//                 "blob:",
-//                 "data:",
-//                 "https://res.cloudinary.com/dj1pime6o/",
-//                 "https://images.unsplash.com/",
-//             ],
-//             fontSrc: [ "'self'", ...fontSrcUrls ],
-//         },
-//     } )
-// );
+app.use(
+    helmet.contentSecurityPolicy( {
+        directives: {
+            defaultSrc: [],
+            connectSrc: [ "'self'", ...connectSrcUrls ],
+            scriptSrc: [ "'unsafe-inline'", "'self'", ...scriptSrcUrls ],
+            styleSrc: [ "'self'", "'unsafe-inline'", ...styleSrcUrls ],
+            workerSrc: [ "'self'", "blob:" ],
+            objectSrc: [],
+            imgSrc: [
+                "'self'",
+                "blob:",
+                "data:",
+                "https://res.cloudinary.com/dj1pime6o/",
+                "https://images.unsplash.com/",
+            ],
+            fontSrc: [ "'self'", ...fontSrcUrls ],
+        },
+    } )
+);
 
-
-
-// app.use(helmet({contentSecurityPolicy: false}));
 app.use( morgan( 'tiny' ) );
 app.use( bodyParser.json() ); // for parsing application/json
 app.use( bodyParser.urlencoded( { extended: true } ) ); // for parsing application/x-www-form-urlencoded
-
 
 app.use( "/api/venues", venueRoutes );
 app.use( "/api/venues/:id/reviews", reviewRoutes );
 app.use( "/api/auth", authRoutes )
 
-
 app.use( express.static( path.join( __dirname, '../build' ) ) );
-
 
 app.get( '/(.*)', ( req, res ) => {
     res.sendFile( path.join( __dirname, '../build', 'index.html' ) );
 } );
 
 app.all( "/(.*)", ( req, res ) => {
-    throw new Error( "Unknow API!" );
+    throw new Error( "Unknown API!" );
 } );
 
 app.use( ( err, req, res, next ) => {
     // error handler
     console.error( err );
     res.status( 500 ).send( err.message )
-} )
-// app.use( AppErrorHandler ); //error-handling middleware should be last,
+} );
+
+app.use( AppErrorHandler ); //error-handling middleware should be last,
 // after other app.use() and routes calls;
 
 const server_port = process.env.PORT || 8080;
